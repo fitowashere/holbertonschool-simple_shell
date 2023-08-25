@@ -147,30 +147,6 @@ You don’t have to:
   
   A built-in is a command or function that is part of the shell itself. The command is "built-in" to the shell program - no external program is necessary to run the command, and a new process does not need to be created.
 
-###FlowChart
-
-```flow
-st=>start: shell.c
-op1=>operation: gets input
-cond=>condition: is it interactive?
-op2=>operation: echo "/bin/ls" | ./hsh
-op3=>operation: exit
-op4=>operation: ./hsh
-op5=>operation: ls
-op6=>operation: exit
-e=>end: To output
-
-st->op1->cond
-cond(yes)->op4->op5->op6->e
-cond(no)->op2->op3->e
-```
-
-###Sequence Diagram
-                    
-```seq
-shell checks if the input is interactive or noninteractive and proceeds to execute the command.
-```
-
 ## Developers
 
 Hector Rodriguez Lopez
