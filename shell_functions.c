@@ -23,7 +23,7 @@ void create_child_process(char **command, char **env, char *full_commands)
 		perror("Execution failed"); /* Print an error message if execve fails */
 		free_array(command);
 		free(full_commands);
-		exit(EXIT_FAILURE);	/* Exit child process with failure status */
+		exit(2);	/* Exit child process with failure status */
 	}
 	else
 	{
