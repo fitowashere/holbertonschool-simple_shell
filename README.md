@@ -116,7 +116,7 @@ You don’t have to:
 
 ### Usage
 
-  ####Interactive
+  Interactive
   
   An interactive shell is defined as the shell that simply takes commands as input from the user and acknowledges the output to the user. This shell also reads startup files that occurred during activation and display a prompt.
   
@@ -127,7 +127,7 @@ You don’t have to:
 	($) exit
 	$
 
-  ####Non-Interactive
+  Non-Interactive
   
   As the name inplies, a non-interactive shell is a type of shell that doesn't interact with the user. We can run it through a script. Also, it can be run through some automated process. The non-interactive shell influence the PATH variables. It is higly recommended to use the full path for a command in non-interactive shells. Non-interactive scripts can smoothly run in the background easily.
   
@@ -151,4 +151,3 @@ You don’t have to:
 
 Hector Rodriguez Lopez
 Sweety Marie Castro
-###End

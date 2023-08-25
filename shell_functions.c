@@ -21,6 +21,8 @@ void create_child_process(char **command, char **env, char *full_commands)
 	{
 		execve(full_commands, command, env); /* Execute the command using execve */
 		perror("Execution failed"); /* Print an error message if execve fails */
+		free_array(command);
+		free(full_commands);
 		exit(EXIT_FAILURE);	/* Exit child process with failure status */
 	}
 	else
@@ -51,13 +53,14 @@ int execution(char **commands, char **env)
 		{
 			fprintf(stderr, "%s: command not found\n", commands[0]);
 			/*display a more specific error message*/
+			free_array(commands);
 			return (0);
 		}
 	}
 
 	create_child_process(commands, env, commands[0]);
 	/* Call the create_child_process function */
-
+	free_array(commands);
 	return (1);
 }
 
@@ -75,13 +78,24 @@ char **separate_commands(char *commands, char *separater)
 	int token_count = 0;
 
 	tokens = malloc(sizeof(char *) * 10);
+
+	if (tokens == NULL)
+	{
+		perror("Memory allocation failed");
+		exit(EXIT_FAILURE);
+	}
 	token = strtok(commands, separater); /*separates the comands into tokens*/
 
 	while (token)
 	{
-
 		/*Store current token in the tokens array */
 		tokens[token_count] = strdup(token);
+		if (tokens[token_count] == NULL)
+		{
+			perror("Memory allocation failed");
+			free_tokens(tokens);
+			exit(EXIT_FAILURE);
+		}
 		token_count++; /* Increment the token count */
 
 		token = strtok(NULL, separater);
@@ -96,7 +110,8 @@ char **separate_commands(char *commands, char *separater)
 	 * tokens[token_count] element is set to
 	 * NULL to mark the end of the array.
 	 */
-
+	/*free_tokens(tokens); this crashes the hell out of the program*/
+	free(token);
 	return (tokens);
 }
 
@@ -138,6 +153,7 @@ void handle_commands(char **commands, char **env)
 	}
 	else
 		free(commands);
+
 }
 
 /**
