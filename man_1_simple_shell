@@ -1,1 +1,61 @@
-will update when the time comes just need the file.
+.TH SIMPLE_SHELL 1 "August 25, 2023" Linux "USER MANUALS"
+.SH NAME
+
+simple_shell - command language interpreter
+
+.SH SYNOPSIS
+.B #include\ "shell.h"
+
+.B Interactive Mode: ./hsh
+
+.B Non-Interactive Mode: [COMMAND]... | ./hsh
+
+.SH COMPILE
+ gcc -Wall -Werror -Wextra -pedantic -std=gnu89 *.c -o hsh
+
+.SH DESCRIPTION
+Our simple_shell program is capable of receiving input by the user at the command line.
+The program reads the input, splits it into arguments, and executes the command being provided.
+
+.SH Files
+    shell.h - libraries and prototypes
+    shell_functions.c- holds 5 functions : create_child_process, execution, Separates_commands, handle_commands and builtin_commands.
+    shell.c - holds 4 Functions: main, get_path, path and free_array.
+
+.SH Functions 
+
+.B separate_commands
+The 'separete_commands.c' source file houses fucntions responsible for tokenizing user input into separate commands. This step is crucial for executing multiple commands within a single input line.
+
+.B handle_commands
+In the 'handle_commands.c' source file, we implement functions to process and interpret the user's command or an external executable file.
+
+.B free_array
+Memory management is essential in any programming project. The 'free_array.c' source file contains functions to properly free memory allocated during the execution of our shell, preventing memory leaks.
+
+.B builtin_commands
+Certain commands are intrinsic to a shell and are more efficiently executed within the shell's context. The 'builtin_commands.c' source file contains is dedicated to implementing these built-in commands.
+
+.B add_path
+The 'add_path.c' source file provides functions to enhance the functionality of our shell by dynamically adding directories to the shells search path, ensuring seamless execution of external commands.
+
+.B execution
+THe 'execution.c' source file handles the execution of external commands. It involves creating child-processes and using system calls to replace the child process's code with the desired external commands.
+
+
+.B create_child_process
+Creating child process is a fundamental concept in Unix-like operating systems. The 'create_child_process.c' source file contains fucntions responisble for creating and managing child processes to execute external commands.
+
+.SS SHELL BUILTIN COMMANDS
+    env - prints environmental variables
+    exit - exits out of simple shell and returns to user's original shell
+    $$ - gets process id
+
+.SH RETURN
+Return "-1" on error with prompted error line message or "0" on success
+
+.SH BUGS
+No known bugs.
+
+.SH AUTHOR
+Sweety Marie Castro & Hector Rodriguez Lopez
