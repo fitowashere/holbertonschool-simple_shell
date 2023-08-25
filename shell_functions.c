@@ -51,7 +51,6 @@ int execution(char **commands, char **env)
 		{
 			fprintf(stderr, "%s: command not found\n", commands[0]);
 			/*display a more specific error message*/
-			free_array(commands);
 			return (0);
 		}
 	}
@@ -59,7 +58,6 @@ int execution(char **commands, char **env)
 	create_child_process(commands, env, commands[0]);
 	/* Call the create_child_process function */
 
-	free_array(commands);
 	return (1);
 }
 
