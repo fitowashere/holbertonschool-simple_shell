@@ -12,8 +12,6 @@ int main(int ac, char **av, char **env)
 	char *str = NULL, **commands = NULL;
 	size_t len = 0;
 
-	
-
 	(void)ac; /* Suppress unused parameter warning */
 	(void)av; /* Suppress unused parameter warning */
 
@@ -41,9 +39,10 @@ int main(int ac, char **av, char **env)
 		free(str);
 
 		handle_commands(commands, env);
-	
-		free_array(commands);
 	}
+
+	free_array(commands);
+	free(str);
 	return (0);
 }
 
@@ -57,8 +56,8 @@ int main(int ac, char **av, char **env)
 char *path(char **env)
 {
 	int counter = 0;
-	char *path = NULL;
-	char **new_path = NULL;
+	char *path;
+	char **new_path;
 
 	while (env[counter])
 	{
