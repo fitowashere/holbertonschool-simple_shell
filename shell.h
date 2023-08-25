@@ -19,5 +19,6 @@ char *add_path(char **command_token, char **path_token);
 int builtin_commands(char **commands);
 void free_array(char **array);
 void handle_commands(char **commands, char **env);
+void free_tokens(char **tokens);
 
 #endif
